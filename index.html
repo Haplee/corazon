@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Perfecto Animado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+        }
+
+        .heart {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            animation: heartbeat 1.4s ease-in-out infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 160px;
+            background: #ff3366;
+            border-radius: 100px 100px 0 0;
+            box-shadow: 
+                inset -5px -5px 20px rgba(0, 0, 0, 0.966),
+                inset 2px 2px 10px rgba(255, 41, 41, 0.349),
+                0 0 30px rgb(255, 0, 64);
+        }
+
+        .heart::before {
+            left: 100px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            20%, 60% { transform: scale(1.15); }
+            40%, 80% { transform: scale(1.05); }
+        }
+
+        /* Detalle de sombras y brillo */
+        .heart::before,
+        .heart::after {
+            background: radial-gradient(circle at 70% 30%, 
+                #ff3366 0%, 
+                #cc0033 60%, 
+                #990022 100%);
+        }
+
+        /* Efecto 3D */
+        .heart::after {
+            box-shadow: 
+                inset 5px -5px 20px rgba(0, 0, 0, 0),
+                inset -2px 2px 10px rgba(255, 255, 255, 0),
+                0 0 30px rgb(255, 51, 102);
+        }
+
+        /* Base del corazón */
+        .heart::before::after,
+        .heart::after::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            width: 100px;
+            height: 20px;
+            background: #cc0033;
+            border-radius: 50%;
+            filter: blur(5px);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+</body>
+</html>
